@@ -1,8 +1,26 @@
-# Python
+# =====================================
+# ARCHIVOS Y CARPETAS A NO SUBIR
+# =====================================
+
+# Datos descargados (muy pesados - 570MB)
+data/
+*.parquet
+
+# Resultados duplicados (solo mantener sample_results/)
+results/
+Proyecto_final/
+
+# Logs de Airflow (temporales)
+logs/
+airflow-webserver.pid
+airflow.cfg
+webserver_config.py
+
+# Archivos de Python
 __pycache__/
-*.py[cod]
-*$py.class
-*.so
+*.pyc
+*.pyo
+*.pyd
 .Python
 build/
 develop-eggs/
@@ -24,24 +42,29 @@ wheels/
 venv/
 env/
 ENV/
-.venv/
+
+# Docker volumes y datos temporales
+.docker/
 
 # IDE
 .vscode/
 .idea/
 *.swp
 *.swo
-*~
 
-# OS
+# Sistema operativo
 .DS_Store
 Thumbs.db
 
-# Project specific
-performance/*.png
-performance/*.csv
-visualizations/*.gif
-visualizations/*.png
+# Git
+.git/
 
-# Logs
-*.log
+# =====================================
+# MANTENER SOLO ARCHIVOS ESENCIALES:
+# - Scripts de automatización (.bat, .sh)
+# - DAGs de Airflow
+# - Docker configuration
+# - README.md
+# - requirements.txt
+# - Resultados de ejemplo (carpeta results/)
+# =====================================

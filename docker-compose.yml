@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  # Servicio principal - Jupyter + Dask
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8889:8888"    # Jupyter
+      - "8788:8787"    # Dask Dashboard  
+      - "8081:8080"    # Airflow Web
+      - "8786:8786"    # Dask Scheduler
+    volumes:
+      - .:/workspace
+    environment:
+      - JUPYTER_TOKEN=password123
+    depends_on:
+      - postgres
+    deploy:
+      resources:
+        limits:
+          memory: 8G
+        reservations:
+          memory: 6G
+    shm_size: 2g
+
+  # Base de datos para Airflow
+  postgres:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: airflow
+      POSTGRES_PASSWORD: airflow
+      POSTGRES_DB: airflow
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:

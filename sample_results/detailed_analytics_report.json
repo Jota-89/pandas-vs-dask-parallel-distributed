@@ -1,0 +1,237 @@
+{
+  "timestamp": "2025-11-13T06:39:03.342925",
+  "dataset_overview": {
+    "total_files": 10,
+    "total_trips": 33854980,
+    "total_rows": 33854980,
+    "processing_time": 18.736583709716797,
+    "throughput_rows_per_sec": 1806891.8285483816
+  },
+  "financial_metrics": {
+    "average_fare": 19.23,
+    "total_revenue_estimate": 651151004.26,
+    "fare_per_mile": 3.91
+  },
+  "distance_metrics": {
+    "average_distance_miles": 4.92,
+    "total_miles_estimate": 166621406.77
+  },
+  "temporal_analysis": {
+    "peak_hours": [
+      {
+        "hour": "18",
+        "trips": 2431659,
+        "percentage": 7.2,
+        "avg_fare": 18.11,
+        "avg_distance": 3.71
+      },
+      {
+        "hour": "17",
+        "trips": 2309031,
+        "percentage": 6.8,
+        "avg_fare": 19.26,
+        "avg_distance": 4.33
+      },
+      {
+        "hour": "19",
+        "trips": 2138423,
+        "percentage": 6.3,
+        "avg_fare": 18.09,
+        "avg_distance": 4.14
+      },
+      {
+        "hour": "16",
+        "trips": 2090922,
+        "percentage": 6.2,
+        "avg_fare": 20.64,
+        "avg_distance": 4.61
+      },
+      {
+        "hour": "15",
+        "trips": 2051173,
+        "percentage": 6.1,
+        "avg_fare": 20.6,
+        "avg_distance": 4.81
+      }
+    ],
+    "low_hours": [
+      {
+        "hour": "4",
+        "trips": 199653,
+        "percentage": 0.6
+      },
+      {
+        "hour": "5",
+        "trips": 216817,
+        "percentage": 0.6
+      },
+      {
+        "hour": "3",
+        "trips": 273970,
+        "percentage": 0.8
+      },
+      {
+        "hour": "2",
+        "trips": 417282,
+        "percentage": 1.2
+      },
+      {
+        "hour": "6",
+        "trips": 488596,
+        "percentage": 1.4
+      }
+    ]
+  },
+  "geographic_analysis": {
+    "top_pickup_zones": [
+      {
+        "zone": "132",
+        "trips": 1664345,
+        "percentage": 4.9
+      },
+      {
+        "zone": "161",
+        "trips": 1582873,
+        "percentage": 4.7
+      },
+      {
+        "zone": "237",
+        "trips": 1552158,
+        "percentage": 4.6
+      },
+      {
+        "zone": "236",
+        "trips": 1407171,
+        "percentage": 4.2
+      },
+      {
+        "zone": "162",
+        "trips": 1169813,
+        "percentage": 3.5
+      },
+      {
+        "zone": "230",
+        "trips": 1140915,
+        "percentage": 3.4
+      },
+      {
+        "zone": "186",
+        "trips": 1111200,
+        "percentage": 3.3
+      },
+      {
+        "zone": "138",
+        "trips": 1074503,
+        "percentage": 3.2
+      },
+      {
+        "zone": "142",
+        "trips": 1067614,
+        "percentage": 3.2
+      },
+      {
+        "zone": "170",
+        "trips": 978002,
+        "percentage": 2.9
+      }
+    ],
+    "top_dropoff_zones": [
+      {
+        "zone": "236",
+        "trips": 1460277,
+        "percentage": 4.3
+      },
+      {
+        "zone": "237",
+        "trips": 1400521,
+        "percentage": 4.1
+      },
+      {
+        "zone": "161",
+        "trips": 1261078,
+        "percentage": 3.7
+      },
+      {
+        "zone": "230",
+        "trips": 1078451,
+        "percentage": 3.2
+      },
+      {
+        "zone": "170",
+        "trips": 1007049,
+        "percentage": 3.0
+      },
+      {
+        "zone": "162",
+        "trips": 971600,
+        "percentage": 2.9
+      },
+      {
+        "zone": "142",
+        "trips": 932761,
+        "percentage": 2.8
+      },
+      {
+        "zone": "239",
+        "trips": 924449,
+        "percentage": 2.7
+      },
+      {
+        "zone": "68",
+        "trips": 884131,
+        "percentage": 2.6
+      },
+      {
+        "zone": "141",
+        "trips": 871489,
+        "percentage": 2.6
+      }
+    ]
+  },
+  "payment_analysis": {
+    "payment_distribution": [
+      {
+        "type_code": "type_1",
+        "type_name": "Tarjeta de Cr\u00e9dito",
+        "trips": 24999870,
+        "percentage": 73.8,
+        "avg_tip": 4.36
+      },
+      {
+        "type_code": "type_2",
+        "type_name": "Efectivo",
+        "trips": 4599611,
+        "percentage": 13.6,
+        "avg_tip": 0.0
+      },
+      {
+        "type_code": "type_0",
+        "type_name": "Desconocido/Disputado",
+        "trips": 3391267,
+        "percentage": 10.0,
+        "avg_tip": 0.71
+      },
+      {
+        "type_code": "type_4",
+        "type_name": "Descuento/Cortes\u00eda",
+        "trips": 628268,
+        "percentage": 1.9,
+        "avg_tip": 0.05
+      },
+      {
+        "type_code": "type_3",
+        "type_name": "Sin Cargo",
+        "trips": 235960,
+        "percentage": 0.7,
+        "avg_tip": 0.02
+      },
+      {
+        "type_code": "type_5",
+        "type_name": "Voucher",
+        "trips": 4,
+        "percentage": 0.0,
+        "avg_tip": 0.0
+      }
+    ]
+  }
+}
