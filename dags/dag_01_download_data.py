@@ -39,7 +39,7 @@ def download_nyc_data(**context):
 
     data_dir = Path("/workspace/data/nyc_taxi")
     data_dir.mkdir(parents=True, exist_ok=True)
-    
+
     print(f"📁 Directorio destino: {data_dir}")
     print(f"📁 Directorio existe: {data_dir.exists()}")
 
@@ -50,9 +50,15 @@ def download_nyc_data(**context):
         "https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2024-03.parquet",
         "https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2024-04.parquet",
         "https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2024-05.parquet",
+        "https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2024-06.parquet",
+        "https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2024-07.parquet",
+        "https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2024-08.parquet",
+        "https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2024-09.parquet",
+        "https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2024-10.parquet",
     ]
 
     print(f"🌐 URLs a descargar: {len(files_to_download)}")
+    print("📅 ** DESCARGANDO 10 MESES DE DATOS (ENERO-OCTUBRE 2024) **")
 
     downloaded_files = []
     total_size = 0
@@ -68,24 +74,26 @@ def download_nyc_data(**context):
         filename = url.split("/")[-1]
         file_path = data_dir / filename
 
-        print(f"\n🔍 {i}/5 Verificando: {filename}")
+        print(f"\n🔍 {i}/{len(files_to_download)} Verificando: {filename}")
         print(f"   📁 Ruta completa: {file_path}")
         print(f"   📁 Existe: {file_path.exists()}")
 
         if file_path.exists():
             size_mb = file_path.stat().st_size / (1024 * 1024)
-            print(f"✅ {i}/5 Ya existe: {filename} ({size_mb:.1f} MB)")
+            print(
+                f"✅ {i}/{len(files_to_download)} Ya existe: {filename} ({size_mb:.1f} MB)")
             downloaded_files.append(str(file_path))
             total_size += size_mb
             continue
 
-        print(f"📥 {i}/5 Descargando: {filename}...")
+        print(f"📥 {i}/{len(files_to_download)} Descargando: {filename}...")
         print(f"   🌐 Desde URL: {url}")
-        
+
         try:
             urllib.request.urlretrieve(url, file_path)
             size_mb = file_path.stat().st_size / (1024 * 1024)
-            print(f"✅ {i}/5 DESCARGADO EXITOSAMENTE: {filename} ({size_mb:.1f} MB)")
+            print(
+                f"✅ {i}/{len(files_to_download)} DESCARGADO EXITOSAMENTE: {filename} ({size_mb:.1f} MB)")
             print(f"   📁 Verificación existe: {file_path.exists()}")
             downloaded_files.append(str(file_path))
             total_size += size_mb
@@ -103,7 +111,7 @@ def download_nyc_data(**context):
     print(f"   ✅ Archivos descargados: {len(downloaded_files)}")
     print(f"   💾 Tamaño total: {total_size:.1f} MB")
     print(f"   📁 Ubicación: {data_dir}")
-    
+
     # MOSTRAR LISTA COMPLETA DE ARCHIVOS
     print(f"\n📋 LISTA COMPLETA DE ARCHIVOS:")
     for i, file_path in enumerate(downloaded_files, 1):
@@ -114,7 +122,7 @@ def download_nyc_data(**context):
         raise Exception("❌ CRÍTICO: No se pudieron descargar archivos")
 
     print(f"\n🎉 DAG 1 COMPLETADO EXITOSAMENTE!")
-    
+
     return {
         'files_downloaded': len(downloaded_files),
         'total_size_mb': total_size,
@@ -137,8 +145,9 @@ dag.doc_md = """
 Descargar datos reales de NYC Taxi para el benchmark.
 
 ## Archivos Descargados
-- 5 archivos .parquet de 2024 (~250MB total)
-- Datos reales de millones de viajes
+- 10 archivos .parquet de 2024 (enero-octubre) (~500MB+ total)
+- Datos reales de decenas de millones de viajes
+- Mayor dataset = mejor benchmark
 
 ## Siguiente DAG
 Después de este, ejecutar: `dag_02_sequential`
