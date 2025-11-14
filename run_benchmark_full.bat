@@ -33,7 +33,7 @@ REM 5. ACTIVAR TODOS LOS DAGS
 echo  Paso 5: Activando todos los DAGs...
 call docker exec comp_paralel-app-1 airflow dags unpause dag_01_download_data
 call docker exec comp_paralel-app-1 airflow dags unpause dag_02_sequential  
-call docker exec comp_paralel-app-1 airflow dags unpause dag_03_dask_simple
+call docker exec comp_paralel-app-1 airflow dags unpause dag_03_dask_turbo
 call docker exec comp_paralel-app-1 airflow dags unpause dag_04_comparison
 call docker exec comp_paralel-app-1 airflow dags unpause dag_05_analytics
 
@@ -56,7 +56,7 @@ echo  ^^ Esperando procesamiento secuencial (60 segundos)...
 timeout /t 60 /nobreak >nul
 
 echo  7.3 - Ejecutando procesamiento PARALELO (Dask)...
-call docker exec comp_paralel-app-1 airflow dags trigger dag_03_dask_simple  
+call docker exec comp_paralel-app-1 airflow dags trigger dag_03_dask_turbo  
 echo  ^^ Esperando procesamiento paralelo (40 segundos)...
 timeout /t 40 /nobreak >nul
 

@@ -27,6 +27,14 @@ RUN pip install --no-cache-dir \
     jupyter==1.0.0 \
     psutil==5.9.5
 
+# Copiar scripts de inicio de workers
+COPY start-dask-workers-MAXIMO.sh /workspace/
+COPY start-dask-workers-OPTIMO.sh /workspace/
+COPY start-dask-simple.sh /workspace/
+RUN chmod +x /workspace/start-dask-workers-MAXIMO.sh
+RUN chmod +x /workspace/start-dask-workers-OPTIMO.sh
+RUN chmod +x /workspace/start-dask-simple.sh
+
 # Crear directorios
 RUN mkdir -p data results dags logs
 
@@ -39,5 +47,5 @@ ENV AIRFLOW__CORE__DAGS_FOLDER=/workspace/dags
 
 EXPOSE 8888 8787 8080
 
-# Inicio con múltiples workers Dask + Airflow
-CMD ["sh", "-c", "until pg_isready -h postgres -p 5432 -U airflow; do sleep 2; done && airflow db init && airflow users create --username demo --firstname Demo --lastname User --role Admin --email demo@example.com --password demo 2>/dev/null || true; rm -f /workspace/airflow-webserver.pid || true; dask-scheduler --host 0.0.0.0 --port 8786 --dashboard-address 0.0.0.0:8787 & sleep 5 && for i in {1..4}; do dask-worker tcp://localhost:8786 --nthreads 2 --memory-limit 2GB & sleep 1; done && airflow scheduler & sleep 5 && airflow webserver -p 8080"]
+# Inicio con workers Dask MÁXIMO ABSOLUTO + Airflow
+CMD ["bash", "-c", "sleep 10 && bash /workspace/start-dask-simple.sh"]
